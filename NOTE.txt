@@ -1,0 +1,6 @@
+﻿Service Life Time
+	- Add singleton -> you will get the same obj for every request
+	- AddScoped -> you will get a new obj for every request
+	- Transient -> you will get a new instance every time one is request
+
+	Pos and con of this three methode?
