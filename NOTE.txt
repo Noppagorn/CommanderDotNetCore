@@ -1,6 +1,18 @@
-﻿Service Life Time
+﻿# Service Life Time
 	- Add singleton -> you will get the same obj for every request
 	- AddScoped -> you will get a new obj for every request
 	- Transient -> you will get a new instance every time one is request
 
 	Pos and con of this three methode?
+
+# Create SQL server in Docker
+	docker pull mcr.microsoft.com/mssql/server:2019-latest
+	docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" `
+		-p 1433:1433 --name sql1 -h sql1 `
+		-d mcr.microsoft.com/mssql/server:2019-latest
+
+
+# Connect to Docker command
+	docker exec -it sql1 "bash"
+	/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+
