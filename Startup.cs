@@ -38,6 +38,7 @@ namespace Commander
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Commander", Version = "v1" });
             });
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());// add auto mapper
 
             services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
         }
