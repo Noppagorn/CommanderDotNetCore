@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Commander.Dtos
 {
-    public class CommandCreateDto
+    public class CommandUpdateDto
     {
         [Required]
         [MaxLength(250)]
@@ -17,6 +17,6 @@ namespace Commander.Dtos
 
         [Required]
         public string Platform { get; set; }
-        public object Id { get; internal set; }
+        //public object Id { get; internal set; }
     }
 }

@@ -29,7 +29,12 @@ namespace Commander.Data
             return new Command {Id =  0, HowTo =  "Boild an egg", Line = "Boil water", Platform = "kattle & Pen" };
         }
 
-        public bool SaveChange()
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCommand(Command cmd)
         {
             throw new NotImplementedException();
         }
