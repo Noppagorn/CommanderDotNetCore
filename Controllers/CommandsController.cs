@@ -80,7 +80,7 @@ namespace Commander.Controllers
 
         //PATCH api/commands/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialCommandUpdate(int id,JsonPatchDocument<CommandUpdateDto> patchDoc) 
+        public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<CommandUpdateDto> patchDoc)
         {
             var commandModelFromRepo = _repository.GetCommandById(id);
             if (commandModelFromRepo == null)
@@ -89,7 +89,7 @@ namespace Commander.Controllers
             }
 
             var commandToPatch = _mapper.Map<CommandUpdateDto>(commandModelFromRepo);
-            patchDoc.ApplyTo(commandToPatch,ModelState);
+            patchDoc.ApplyTo(commandToPatch, ModelState);
 
             if (!TryValidateModel(commandToPatch)) {
                 return ValidationProblem(ModelState);
@@ -102,7 +102,20 @@ namespace Commander.Controllers
             _repository.SaveChanges();
 
             return NoContent();
+        }
 
+        //Delete api/commands/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteCommand(int id) {
+            var commandModelFromRepo = _repository.GetCommandById(id);
+            if (commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteCommand(commandModelFromRepo);
+            _repository.SaveChanges();
+            return NoContent();
         }
     }
 }
